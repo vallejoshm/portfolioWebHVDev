@@ -1,0 +1,10 @@
+
+.container-fluid{
+    display: flex;
+    justify-content: center;
+}
+    .carousel{
+        width: 40%;
+        height: 20%;
+        margin-bottom: 5%;
+    }

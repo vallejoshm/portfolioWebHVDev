@@ -1,0 +1,56 @@
+.skills{
+    display:flex;
+    flex-direction:column;
+    margin:5%;
+}
+    .skills-descripcion{
+        display:flex;
+        flex-direction:row;
+        flex-wrap:nowrap;
+        justify-content:space-between;
+    }
+        .skills-descripcion-item{
+            display:flex;
+            flex-direction:column;
+            flex-wrap: nowrap;
+            justify-content:center;
+        }
+            .parrafo-skills-descripcion{
+                font-size: 30px;
+            }
+        .bloques{
+            display:flex;
+            flex-direction:column;
+            flex-wrap: nowrap;
+        }
+            .bloque{
+                display: flex;
+                justify-content: center;
+            }
+                .bi{
+                    width: 70px;
+                    height: 70px;
+                }
+                    .bqsoft:hover{
+                        color: rgb(53, 53, 175);
+                    }
+                    .bqhard:hover{
+                        color: rgb(238, 53, 53);
+                    }
+                
+    .hard{
+        color:rgb(238, 53, 53);
+    }
+    .soft{
+        color:rgb(53, 53, 175);
+    }
+    @media only screen and (max-width: 600px) {
+        .bi{
+            width: auto;
+            height: auto;
+        } 
+    }
+       
+        
+            
+    

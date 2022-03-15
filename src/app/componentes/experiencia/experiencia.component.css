@@ -1,0 +1,24 @@
+.experiencia{
+    margin: 5%;
+}
+    .experiencia h2{
+        margin-bottom:5%;
+    }
+
+    .section-experiencia{
+        display:flex;
+        flex-direction: column;
+        margin-top:3%;
+
+    }
+        .article-experiencia{
+            display: flex;
+            flex-flow: row nowrap ;  
+        }
+        .article-experiencia-item{
+            display: inline;
+            flex-direction: column;
+            margin-left: 0%;
+            margin-right:5%;
+            margin-bottom:5%;
+        }

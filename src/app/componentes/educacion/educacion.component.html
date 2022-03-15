@@ -1,0 +1,54 @@
+
+<section class="educacion">
+    <h2>
+        Educación
+    </h2>
+    <div class="section-educacion" *ngIf="mostrar else mostrarDos">
+        <article class="article-educacion" *ngFor="let institucion of instEducativas, index as i">
+            <div class="article-educacion-item">
+                <img src="../../../assets/{{institucion.logo}}" width="150" height="100" alt="logo ungs" class="logoUngs">
+            </div>
+            <div class="article-educacion-item">        
+                <h5>{{institucion.titulo}}</h5>
+                <h5>{{institucion.datos.nombre}}</h5>
+                <button class="btn btn-primary" (click)="obtenerUna(i)">Leer mas...</button>
+            </div>
+        </article>
+    </div>
+    <ng-template #mostrarDos>
+        <article>
+            <div class="mt-5">
+                <h3>Institución Educativa: {{unaInst.datos.nombre}}</h3>
+                <br>
+                <h4>Nombre de la Carrera: {{unaInst.titulo}}</h4>
+                <p>{{unaInst.descripcion.subtitulo}}<br>{{unaInst.descripcion.descrip}}</p>
+                <h5>Datos de la institución:</h5>
+            </div>
+            <div>
+                <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">nombre</th>
+                        <th scope="col">direccion</th>
+                        <th scope="col">telefono</th>
+                        <th scope="col">link</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">{{unaInst.datos.nombre}}</th>
+                        <td>{{unaInst.datos.direccion}}</td>
+                        <td>{{unaInst.datos.telefono}}</td>
+                        <td>{{unaInst.datos.web}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+            <div>
+                <button class="btn btn-primary" (click)="mostrar=!mostrar">Leer menos...</button>
+            </div>
+        </article>
+        <br>
+        <br>
+    </ng-template>
+</section>

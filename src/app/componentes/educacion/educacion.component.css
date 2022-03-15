@@ -1,0 +1,24 @@
+
+.educacion{
+    margin: 5%;
+}
+    .educacion h2{
+        margin-bottom:5%;
+    }
+
+    .section-educacion{
+        display:flex;
+        flex-direction: column;
+
+    }
+        .article-educacion{
+            display: flex;
+            flex-flow: row nowrap ;  
+        }
+        .article-educacion-item{
+            display: inline;
+            flex-direction: column;
+            margin-left: 0%;
+            margin-right:5%;
+            margin-bottom:5%;
+        }
