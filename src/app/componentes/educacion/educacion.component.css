@@ -4,7 +4,26 @@
 }
     .educacion h2{
         margin-bottom:5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
+        .botonModal{
+            background: transparent;
+            border: none;
+        }
+        .agregarEdu{
+            color: rgb(0, 0, 0);
+            margin-right: 5%;
+            width: 30px;
+            height : 30px;
+        }
+            .agregarEdu:hover{
+                color : rgb(61, 193, 246);
+            }
+        .etiqStatus{
+            margin-right: 10px;
+        }
 
     .section-educacion{
         display:flex;
@@ -13,12 +32,47 @@
     }
         .article-educacion{
             display: flex;
-            flex-flow: row nowrap ;  
+            flex-flow: row nowrap ;
+            justify-content: space-between; 
         }
         .article-educacion-item{
             display: inline;
-            flex-direction: column;
             margin-left: 0%;
-            margin-right:5%;
             margin-bottom:5%;
         }
+        .botonesElementos{
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            width: 100%;
+        }
+            .botonesElementos a{
+                display: contents;
+                color: rgb(0, 0, 0);
+
+
+            }
+            .trash{
+                color: rgb(0, 0, 0);
+            }
+                .trash:hover{
+                    color:rgb(251, 68, 68);
+                }
+            
+            .editar{
+                color: rgb(0, 0, 0);
+            }
+                .editar:hover{
+                    color: rgb(247, 181, 48);
+                }
+
+            .botonesElementos svg{
+                margin: 5px;
+            }
+
+            
+
+           
+            
+
+            

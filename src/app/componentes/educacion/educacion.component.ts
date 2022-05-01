@@ -1,5 +1,8 @@
 import { EducacionService } from 'src/app/servicios/educacion/educacion.service';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { ModalNuevaEduComponent } from '../modal-nueva-edu/modal-nueva-edu.component';
+import { Educacion } from 'src/app/modelos/educacion';
 
 @Component({
   selector: 'app-educacion',
@@ -8,26 +11,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EducacionComponent implements OnInit {
 
-  instEducativas : any=[];
+  listaEducacion: Educacion[] = [];
+  mostrar: boolean = true;
+  avanceSi: boolean = true;
+  selected: string = '';
+  unaEdu: any;
 
-  mostrar:boolean = true;
+  constructor(public dialog: MatDialog, private _servicioEduc: EducacionService) { }
 
-  unaInst: any;
 
-  constructor(private _servicioEduc:EducacionService) {
-
-    this.instEducativas= this._servicioEduc.obtenerEducacion();
-
-   }
-
-   obtenerUna(i:number){
-     
-    this.unaInst = this._servicioEduc.obtenerUna(i);
+  obtenerUna(edu: Educacion) {
+    this.listaEducacion.forEach(element => {
+      if(Object.is(element,edu))
+        this.unaEdu=element;
+    });
     this.mostrar=!this.mostrar;
-
-   }
+    this.obtenerLista();
+  } 
+  obtenerLista(){
+    this._servicioEduc.obtenerEducacion().subscribe(listaEducacion => this.listaEducacion = listaEducacion);
+  }
 
   ngOnInit(): void {
+    this.obtenerLista();
+  }
+
+  openDialog(){
+    const dialogRef = this.dialog.open(ModalNuevaEduComponent);
+    dialogRef.afterClosed().subscribe(
+      data => {
+        this.ngOnInit();
+      }
+    );
   }
 
 }
+

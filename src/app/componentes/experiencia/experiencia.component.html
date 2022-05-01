@@ -1,10 +1,10 @@
 
 <section class="experiencia">
     <h2>
-        Experiencia laboral no IT
+        Experiencia laboral
     </h2>
     <div *ngIf="ver else ocultar">
-        <button class="btn btn-primary" (click)="verExpNoIt()">Ocultar</button>
+        <button class="btn btn-outline-primary" (click)="verExpNoIt()">Ocultar</button>
         <div class="section-experiencia" *ngIf="mostrar else mostrarDos">
             <article class="article-experiencia" *ngFor="let experiencia of descripExp, index as i">
                 <div class="article-experiencia-item">
@@ -19,7 +19,7 @@
         </div>
     </div>
     <ng-template #ocultar>
-    <button class="btn btn-primary" (click)="verExpNoIt()">Mostrar</button>
+    <button class="btn btn-outline-primary" (click)="verExpNoIt()">Mostrar</button>
     </ng-template>
     
     <ng-template #mostrarDos>

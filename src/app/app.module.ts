@@ -1,5 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {HttpClientModule } from '@angular/common/http';
+import {ReactiveFormsModule} from '@angular/forms';
+import { MatSliderModule } from '@angular/material/slider';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { ToastrModule } from 'ngx-toastr';
+import { FormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +21,9 @@ import { EducacionComponent } from './componentes/educacion/educacion.component'
 import { ExperienciaComponent } from './componentes/experiencia/experiencia.component';
 import { HabilidadesComponent } from './componentes/habilidades/habilidades.component';
 import { ProyectosComponent } from './componentes/proyectos/proyectos.component';
+import { LoginComponent } from './componentes/login/login.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ModalNuevaEduComponent } from './componentes/modal-nueva-edu/modal-nueva-edu.component';
 
 @NgModule({
   declarations: [
@@ -22,11 +35,23 @@ import { ProyectosComponent } from './componentes/proyectos/proyectos.component'
     EducacionComponent,
     ExperienciaComponent,
     HabilidadesComponent,
-    ProyectosComponent
+    ProyectosComponent,
+    LoginComponent,
+    ModalNuevaEduComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    HttpClientModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    MatSliderModule,
+    BrowserAnimationsModule,
+    MatSelectModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    ToastrModule.forRoot(),
+    FormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
