@@ -14,13 +14,16 @@ export class EducacionService {
   obtenerEducacion(): Observable<Educacion[]> {
     return this.httpClient.get<Educacion[]>(this.educacionURL + 'traerlistaeducacion');
   }
-  // obtenerUnaServ(edu:Educacion): Observable<any> {
-  //   return this.httpClient.get<Educacion>(this.educacionURL + `traerunaeducacion/${edu}`);
-  // }
+   obtenerUnaServ(id: number): Observable<Educacion> {
+     return this.httpClient.get<Educacion>(this.educacionURL + `traerunaeducacion/${id}`);
+   }
   nuevaEducacion(edu: Educacion): Observable<any>{
     return this.httpClient.post<any>(this.educacionURL + 'nuevaeducacion', edu);
   }
   eliminarEducacion(edu: Educacion): Observable<Educacion>{
-    return this.httpClient.delete<Educacion>(this.educacionURL + `eliminareducacion/${edu.id}`)
+    return this.httpClient.delete<Educacion>(this.educacionURL + `eliminareducacion/${edu.id}`);
+  }
+  editarEducacion(edu: Educacion, id: number): Observable<Educacion> {
+    return this.httpClient.put<Educacion>(this.educacionURL + `editareducacion/${id}`,edu);
   }
 }

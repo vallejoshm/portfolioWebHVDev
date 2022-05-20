@@ -1,7 +1,7 @@
 <section class="educacion">
     <h2>
-        Educación
-        <button mat-button class="botonModal" (click)="openDialog()">
+        <span class="titulo"><strong>Educación</strong></span>
+        <button mat-button class="botonModal" (click)="openDialog(-1)">
             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-file-plus agregarEdu"
                 viewBox="0 0 16 16">
                 <path
@@ -14,17 +14,17 @@
     <div class="section-educacion" *ngIf="mostrar else mostrarDos">
         <article class="article-educacion" *ngFor="let educacion of listaEducacion">
             <div class="article-educacion-item">
-                <img src="../../../assets/{{educacion.nombre}}.png" width="150" height="100" alt="logo ungs"
-                    class="logoUngs">
+                <img src="../../../assets/{{educacion.nombre}}.png" width="200" height="120" alt="logo ungs"
+                    class="logo img-fluid">
             </div>
             <div class="article-educacion-item">
                 <h3>{{educacion.titulo}}</h3>
                 <h5>{{educacion.nombre}}</h5>
-                <button class="btn btn-primary" (click)="obtenerUna(educacion)">Leer mas...</button>
+                <button class="btn btn-outline-primary botonMas" (click)="obtenerUna(educacion)">Leer mas...</button>
             </div>
             <div class="article-educacion-item ">
                 <div class="botonesElementos">
-                    <a href="#">
+                    <a (click)="openDialog(educacion.id)">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                             class="bi bi-pencil-square editar" viewBox="0 0 16 16">
                             <path
@@ -33,7 +33,7 @@
                                 d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                         </svg>
                     </a>
-                    <a href="#">
+                    <a (click)="eliminarEdu(educacion)">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                             class="bi bi-trash trash" viewBox="0 0 16 16">
                             <path
@@ -49,12 +49,17 @@
     </div>
     <ng-template #mostrarDos>
         <article>
-            <div class="mt-5">
-                <h3>Institución Educativa: {{unaEdu.nombre}}</h3>
+            <div class="mt-3">
+                <h2>Institución Educativa: {{unaEdu.nombre}}</h2>
+                <div class="mt-4">
+                    Avance de la carrera: {{unaEdu.avance}}%
+                    <mat-progress-bar mode="determinate" value={{unaEdu.avance}}></mat-progress-bar>
+                </div>
                 <br>
-                <h4>Nombre de la Carrera: {{unaEdu.titulo}}</h4>
-                <p>{{unaEdu.descripCarrera}}<br>{{unaEdu.descripCarrera}}</p>
-                <h5>Datos de la institución:</h5>
+                <h3>Nombre de la Carrera: {{unaEdu.titulo}}</h3>
+                <p>{{unaEdu.descripCarrera}}</p>
+                <br>
+                <h4>Datos de la institución:</h4>
             </div>
             <div>
                 <table class="table table-bordered">

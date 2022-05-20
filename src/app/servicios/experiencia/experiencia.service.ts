@@ -1,60 +1,29 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Experiencia } from 'src/app/modelos/experiencia';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExperienciaService {
 
-  descripExperiencia: any = [
+  experienciaURL = 'http://localhost:8080/'
+  constructor(private httpClient: HttpClient) { }
 
-    {
-      logo: 'logo ungs.png',
-      empresa: 'Universidad Nacional de General Sarmiento',//este dato esta repetido
-      cargo: 'Supervisor de mantenimiento',
-      tareas: 'Reparación, mantenimiento e instalación de equipos de climatización individuales y centrales. Supervisión de auxiliares de mantenimiento para realizar las tareas mencionadas capacitando al personal y coordinando con otras áreas y dependencias.',
-      datos: {
-        nombre: 'Universidad Nacional de General Sarmiento',
-        direccion: 'Juan Maria Gutierrez 1150, Los Polvorines, Malvinas Argentinas, Buenos Aires, Argentina',
-        telefono: '011 4669 7500',
-        web:'https://www.ungs.edu.ar/'        
-      }
-    },
-    {
-      logo: 'logo victor.png',
-      empresa: 'Victor Jr Bar Universitario',
-      cargo: 'Mozo Mostrador',
-      tareas: 'cajero; atención al público general de la Universidad; asistencia en la organización de eventos de la Universidad; reposición de mercadería y control de stock.',
-      datos: {
-        nombre: 'Victor Jr Bar Universitario',
-        direccion: 'Juan Maria Gutierrez 1150, Los Polvorines, Malvinas Argentinas, Buenos Aires, Argentina',
-        telefono: '011 4669 7510',
-        web:'https://victor-bar-meal-delivery.negocio.site/?utm_source=gmb&utm_medium=referral'        
-      }
-    },
-    {
-      logo: 'logo aires.png',
-      empresa: 'Trabajo independiente',
-      cargo: 'Técnico de equipos de climatización',
-      tareas: 'Reparación, mantenimiento e instalación de equipos de climatización individuales y centrales.',
-      datos: {
-        nombre: 'Victor Jr Bar Universitario',
-        direccion: 'Juan Maria Gutierrez 1150, Los Polvorines, Malvinas Argentinas, Buenos Aires, Argentina',
-        telefono: '011 4669 7510',
-        web:'https://victor-bar-meal-delivery.negocio.site/?utm_source=gmb&utm_medium=referral'        
-      }
-    }
-  ];
-
-
-  constructor() { }
-
-  obtenerExp() {
-    return this.descripExperiencia;
+  obtenerExperiencia(): Observable<Experiencia[]> {
+    return this.httpClient.get<Experiencia[]>(this.experienciaURL + 'traerlistaexperiencia');
   }
-  obtenerUnaExp(i: any){
-    return this.descripExperiencia[i];
+  obtenerUnaServ(id: number): Observable<Experiencia> {
+    return this.httpClient.get<Experiencia>(this.experienciaURL + `traerunaexperiencia/${id}`);
+  }
+  nuevaExperiencia(exp: Experiencia): Observable<any> {
+    return this.httpClient.post<any>(this.experienciaURL + 'nuevaexperiencia', exp);
+  }
+  eliminarExperiencia(exp: Experiencia): Observable<Experiencia> {
+    return this.httpClient.delete<Experiencia>(this.experienciaURL + `eliminarexperiencia/${exp.id}`);
+  }
+  editarExperiencia(exp: Experiencia, id: number): Observable<Experiencia> {
+    return this.httpClient.put<Experiencia>(this.experienciaURL + `editarexperiencia/${id}`, exp);
   }
 }
-
-
-

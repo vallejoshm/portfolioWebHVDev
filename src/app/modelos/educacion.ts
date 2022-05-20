@@ -29,5 +29,6 @@ export class Educacion {
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
     }
+    
 
 }

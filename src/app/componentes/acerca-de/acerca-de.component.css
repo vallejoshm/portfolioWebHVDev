@@ -40,7 +40,7 @@
             display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
-            justify-content: end;
+            justify-content: flex-end;
             align-content: space-between;
             align-items: center;
         }
@@ -73,15 +73,21 @@
             }
             .acercaDe-articulo-fotoPerfil{
                 display: flex;
+                align-items: center;
             }
             .figura{
-                margin-top:-20px;
+                margin-top:10px;
                 display: flex;
+                max-width:30%;
+                flex-direction: row;
                 
             }
             .figura figcaption{
                 display: flex;
-                height: 100%;
+                height: 50%;
                 flex-direction:column;
-            }            
+            }
+            .fotoPerfil{
+                max-width: 30%;
+            }      
         }

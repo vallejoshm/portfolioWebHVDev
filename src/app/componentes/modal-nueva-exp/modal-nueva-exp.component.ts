@@ -6,61 +6,59 @@ import { Educacion } from 'src/app/modelos/educacion';
 import { EducacionService } from 'src/app/servicios/educacion/educacion.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-
-
+import { ExperienciaService } from 'src/app/servicios/experiencia/experiencia.service';
+import { Experiencia } from 'src/app/modelos/experiencia';
 @Component({
-  selector: 'app-modal-nueva-edu',
-  templateUrl: './modal-nueva-edu.component.html',
-  styleUrls: ['./modal-nueva-edu.component.css'],
+  selector: 'app-modal-nueva-exp',
+  templateUrl: './modal-nueva-exp.component.html',
+  styleUrls: ['./modal-nueva-exp.component.css']
 })
-export class ModalNuevaEduComponent implements OnInit {
+export class ModalNuevaExpComponent implements OnInit {
 
   ide!: number;
   opcion!: string;
-  avanceSi: boolean = true;
-  finalizada: string = 'Finalizada';
-  enCurso: string = 'En curso';
-  nombreCarrera!: string;
-  descripcion!: string;
-  avanceCarr!: number;
-  nombreInstitucion!: string;
+  trabajoActual: boolean = true;
+  actual: string = 'Si';
+  noActual: string = 'No';
+  descripTareas!: string;
+  nombreEmpresa!: string;
   direccion!: string;
   telefono!: string;
   paginaWeb!: string;
   fechaInicio!: string;
   fechaFin!: string;
-  nuevaEdu: any;
+  nuevaExp: any;
+  cargo!: string;
   titulo: string = '';
   nombreBoton: string = '';
   dato!: string;
-  editar: boolean = false;
+  editar:boolean = false;
 
-  constructor(public dialogRef: MatDialogRef<ModalNuevaEduComponent>,
+  constructor(public dialogRef: MatDialogRef<ModalNuevaExpComponent>,
     @Inject(MAT_DIALOG_DATA) public data: string,
-    private _eduServ: EducacionService, private toastr: ToastrService, private router: Router) {
+    private _expServ: ExperienciaService, private toastr: ToastrService, private router: Router) {
     this.dato = data;
   }
 
-  crearNuevaEdu() {
+  crearNuevaExp() {
     if (this.dato == '-1') {
       this.crear();
-      this.persistirNuevo(this.nuevaEdu);
+      this.persistirNuevo(this.nuevaExp);
     } else {
       this.crear();
-      if(this.editar)this.persistirEdicion(this.nuevaEdu, Number(this.dato));
+      if (this.editar)this.persistirEdicion(this.nuevaExp, Number(this.dato));
     }
   }
 
   crear() {
-    this.nuevaEdu = new Educacion(this.ide, this.opcion, this.nombreCarrera, this.avanceCarr,
-      this.descripcion, this.nombreInstitucion, this.direccion, this.telefono, this.paginaWeb,
-       this.fechaInicio, this.fechaFin);
+    this.nuevaExp = new Experiencia(this.ide, this.trabajoActual, this.nombreEmpresa, this.cargo, this.descripTareas,
+       this.direccion, this.telefono, this.paginaWeb, this.fechaInicio, this.fechaFin);
   }
   
   persistirNuevo(edu: Educacion) {
-    this._eduServ.nuevaEducacion(this.nuevaEdu).subscribe(
+    this._expServ.nuevaExperiencia(this.nuevaExp).subscribe(
       data => {
-        this.toastr.success('Elemento Educacion Creado', 'Ok', {
+        this.toastr.success('Elemento Experiencia Creado', 'Ok', {
           timeOut: 2000
         }), this.router.navigate(['inicio'])
 
@@ -73,10 +71,10 @@ export class ModalNuevaEduComponent implements OnInit {
       }
     );
   }
-  persistirEdicion(edu: Educacion, id: number) {
-    this._eduServ.editarEducacion(this.nuevaEdu, id).subscribe(
+  persistirEdicion(exp: Experiencia, id: number) {
+    this._expServ.editarExperiencia(this.nuevaExp, id).subscribe(
       data => {
-        this.toastr.success('Elemento Educacion Editado', 'Ok', {
+        this.toastr.success('Elemento Experiencia Editado', 'Ok', {
           timeOut: 2000
         }), this.router.navigate(['inicio'])
 
@@ -90,32 +88,24 @@ export class ModalNuevaEduComponent implements OnInit {
     );
   }
 
-  estado() {
-    let avance = 0;
-    if (!this.avanceSi) avance = 100;
-    this.avanceCarr = avance;
-    return avance;
-  }
-
   ngOnInit(): void {
 
     if (this.dato == '-1') {
-      this.titulo = 'Crear Nuevo Item Educacion';
+      this.titulo = 'Crear Nuevo Item Experiencia';
       this.nombreBoton = 'Crear';
     } else {
-      this._eduServ.obtenerUnaServ(Number(this.dato)).subscribe(resp => {  
-        this.opcion = resp.status;
-        this.nombreCarrera = resp.titulo;
-        this.descripcion = resp.descripCarrera;
-        this.avanceCarr = resp.avance;
-        this.nombreInstitucion = resp.nombre;
+      this._expServ.obtenerUnaServ(Number(this.dato)).subscribe(resp => {  
+        this.cargo = resp.cargo;
+        this.descripTareas = resp.descripTareas;
+        this.nombreEmpresa = resp.nombreEmpresa;
         this.direccion = resp.direccion;
         this.telefono = resp.telefono;
         this.paginaWeb = resp.paginaWeb;
         this.fechaInicio = resp.fechaInicio;
-        this.fechaFin = resp.fechaFin;  
+        this.fechaFin = resp.fechaFin; 
+        console.log(resp) 
       });  
-    this.titulo = 'Editar Item Educacion';
+    this.titulo = 'Editar Item Experiencia';
     this.nombreBoton = 'Editar';
         }
   }
@@ -132,14 +122,10 @@ export class ModalNuevaEduComponent implements OnInit {
 
 opcionElegida(ev: MatSelectChange): void {
   this.opcion = (ev.source.selected as MatOption).viewValue;
-  if(this.opcion == this.finalizada) {
-  this.avanceSi = false;
-  this.avanceCarr = this.estado();
-} else if (this.opcion == this.enCurso) {
-  this.avanceSi = true;
+  if(this.opcion == this.actual) {
+  this.trabajoActual = true;
+} else if (this.opcion == this.noActual) {
+  this.trabajoActual = false;
 }
-  
   }
-
 }
-

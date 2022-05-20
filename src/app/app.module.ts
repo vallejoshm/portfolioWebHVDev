@@ -9,6 +9,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatCardModule} from '@angular/material/card';
+
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,9 +26,12 @@ import { EducacionComponent } from './componentes/educacion/educacion.component'
 import { ExperienciaComponent } from './componentes/experiencia/experiencia.component';
 import { HabilidadesComponent } from './componentes/habilidades/habilidades.component';
 import { ProyectosComponent } from './componentes/proyectos/proyectos.component';
-import { LoginComponent } from './componentes/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalNuevaEduComponent } from './componentes/modal-nueva-edu/modal-nueva-edu.component';
+import { ModalNuevaExpComponent } from './componentes/modal-nueva-exp/modal-nueva-exp.component';
+import { ModalNuevaSkillComponent } from './componentes/modal-nueva-skill/modal-nueva-skill.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegistroComponent } from './auth/registro/registro.component';
 
 @NgModule({
   declarations: [
@@ -36,8 +44,11 @@ import { ModalNuevaEduComponent } from './componentes/modal-nueva-edu/modal-nuev
     ExperienciaComponent,
     HabilidadesComponent,
     ProyectosComponent,
+    ModalNuevaEduComponent,
+    ModalNuevaExpComponent,
+    ModalNuevaSkillComponent,
     LoginComponent,
-    ModalNuevaEduComponent
+    RegistroComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +62,11 @@ import { ModalNuevaEduComponent } from './componentes/modal-nueva-edu/modal-nuev
     MatFormFieldModule,
     ToastrModule.forRoot(),
     FormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatProgressBarModule,
+    AutocompleteLibModule,
+    MatProgressSpinnerModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
