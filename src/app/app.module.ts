@@ -32,6 +32,10 @@ import { ModalNuevaExpComponent } from './componentes/modal-nueva-exp/modal-nuev
 import { ModalNuevaSkillComponent } from './componentes/modal-nueva-skill/modal-nueva-skill.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegistroComponent } from './auth/registro/registro.component';
+import { ModalNuevoProyectoComponent } from './componentes/modal-nuevo-proyecto/modal-nuevo-proyecto.component';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { ContactoComponent } from './componentes/contacto/contacto.component';
+import { FooterComponent } from './componentes/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +52,10 @@ import { RegistroComponent } from './auth/registro/registro.component';
     ModalNuevaExpComponent,
     ModalNuevaSkillComponent,
     LoginComponent,
-    RegistroComponent
+    RegistroComponent,
+    ModalNuevoProyectoComponent,
+    ContactoComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +73,8 @@ import { RegistroComponent } from './auth/registro/registro.component';
     MatProgressBarModule,
     AutocompleteLibModule,
     MatProgressSpinnerModule,
-    MatCardModule
+    MatCardModule,
+    CarouselModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

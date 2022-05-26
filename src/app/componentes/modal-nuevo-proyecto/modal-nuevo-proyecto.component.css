@@ -1,0 +1,4 @@
+.input-dinamico{
+    display: flex;
+    flex-direction: column;
+}

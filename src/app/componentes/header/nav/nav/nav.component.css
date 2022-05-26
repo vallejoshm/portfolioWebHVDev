@@ -15,7 +15,7 @@ a{
 }
 
     .navbar{
-        border-bottom: 2px solid black;
+        border-top: 2px solid black;
     }
         .logo{
             flex:1 1 auto;
@@ -48,4 +48,9 @@ a{
             .social a:hover{
                 color: #929292;
             }
+
+.img-logo{
+    max-height: 150px;
+    max-width: 150px;
+}
   
