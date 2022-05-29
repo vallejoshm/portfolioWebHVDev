@@ -36,6 +36,7 @@ import { ModalNuevoProyectoComponent } from './componentes/modal-nuevo-proyecto/
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ContactoComponent } from './componentes/contacto/contacto.component';
 import { FooterComponent } from './componentes/footer/footer.component';
+import { interceptorProvider } from './interceptors/edu-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,7 @@ import { FooterComponent } from './componentes/footer/footer.component';
     MatCardModule,
     CarouselModule.forRoot()
   ],
-  providers: [],
+  providers: [interceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

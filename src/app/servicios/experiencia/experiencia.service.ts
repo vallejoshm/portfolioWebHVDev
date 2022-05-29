@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Experiencia } from 'src/app/modelos/experiencia';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExperienciaService {
 
-  experienciaURL = 'http://localhost:8080/'
+  experienciaURL = environment.experienciaURL;
   constructor(private httpClient: HttpClient) { }
 
   obtenerExperiencia(): Observable<Experiencia[]> {

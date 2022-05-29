@@ -18,7 +18,6 @@ export class RegistroComponent implements OnInit {
   email!: string;
   password!: string;
   errMsj!: string;
-  isLogged = false;
 
   constructor(
     private tokenService: TokenService,
@@ -27,11 +26,7 @@ export class RegistroComponent implements OnInit {
     private toastr: ToastrService
   ) { }
 
-  ngOnInit() {
-    if (this.tokenService.getToken()) {
-      this.isLogged = true;
-    }
-  }
+  ngOnInit() { }
 
   onRegister(): void {
     this.nuevoUsuario = new NuevoUsuario(this.nombre, this.nombreUsuario, this.email, this.password);
@@ -46,9 +41,8 @@ export class RegistroComponent implements OnInit {
       err => {
         this.errMsj = err.error.mensaje;
         this.toastr.error(this.errMsj, 'Fail', {
-          timeOut: 3000,  positionClass: 'toast-top-center',
+          timeOut: 3000, positionClass: 'toast-top-center',
         });
-        // console.log(err.error.message);
       }
     );
   }

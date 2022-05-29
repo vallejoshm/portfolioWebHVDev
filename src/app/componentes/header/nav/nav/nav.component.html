@@ -2,7 +2,7 @@
 <div class="padre container">
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" style="cursor: pointer;" (click)="toIndex()">
                 <img class="img-logo img-fluid" src="../../../assets/logo_small.png" alt="" srcset="">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
@@ -20,40 +20,74 @@
                     </li>
 
                 </ul>
-                <form class="d-flex">
+                <form class="d-flex" *ngIf="isLogged else notLogged" >
                     <div class="social">
                         <div>
-                            <a [routerLink]="['/contacto--']">
+                            <a style="cursor: pointer;" [routerLink]="['/contacto']">
                                 <i class="fas fa-mail-bulk"></i>
                             </a>
                         </div>
                         <div>
-                            <a href="#">
+                            <a style="cursor: pointer;" href="#">
                                 <i class="fab fa-facebook-square"></i>
                             </a>
                         </div>
                         <div>
-                            <a href="#">
+                            <a style="cursor: pointer;" href="#">
                                 <i class="fab fa-instagram-square"></i>
                             </a>
                         </div>
                         <div>
-                            <a href="">
+                            <a style="cursor: pointer;" href="">
                                 <i class="fab fa-linkedin"></i>
                             </a>
                         </div>
                         <div>
-                            <a href="">
+                            <a style="cursor: pointer;" href="">
                                 <i class="fab fa-github"></i>
                             </a>
                         </div>
                         <div>
-                            <a [routerLink]="['/login']">
-                                <i class="fas fa-sign-in-alt"></i>
+                            <a style="cursor: pointer;" (click)="onLogOut()">
+                                <i class="fas fa-sign-out-alt"></i>
                             </a>
                         </div>
                     </div>
                 </form>
+                <ng-template class="d-flex" #notLogged>
+                    <div class="social">
+                        <div>
+                            <a style="cursor: pointer;">
+                                <i class="fas fa-mail-bulk"></i>
+                            </a>
+                        </div>
+                        <div>
+                            <a style="cursor: pointer;">
+                                <i class="fab fa-facebook-square"></i>
+                            </a>
+                        </div>
+                        <div>
+                            <a style="cursor: pointer;">
+                                <i class="fab fa-instagram-square"></i>
+                            </a>
+                        </div>
+                        <div>
+                            <a style="cursor: pointer;">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
+                        <div>
+                            <a style="cursor: pointer;">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                        <div>
+                            <a style="cursor: pointer;" [routerLink]="['/login']">
+                                <i class="fas fa-sign-in-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </ng-template>
             </div>
         </div>
     </nav>
