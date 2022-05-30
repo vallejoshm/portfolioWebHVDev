@@ -103,7 +103,7 @@ export class ModalNuevaExpComponent implements OnInit {
         this.paginaWeb = resp.paginaWeb;
         this.fechaInicio = resp.fechaInicio;
         this.fechaFin = resp.fechaFin; 
-        console.log(resp) 
+       
       });  
     this.titulo = 'Editar Item Experiencia';
     this.nombreBoton = 'Editar';

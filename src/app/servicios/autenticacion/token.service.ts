@@ -17,8 +17,8 @@ export class TokenService {
     window.localStorage.setItem(TOKEN_KEY, token);
   }
 
-  public getToken(): string {
-    return localStorage.getItem(TOKEN_KEY)!;
+  public getToken(): any {
+    return localStorage.getItem(TOKEN_KEY);
   }
 
   public isLogged(): boolean {
@@ -55,6 +55,6 @@ export class TokenService {
 
   public logOut(): void {
     window.localStorage.clear();
-    this.router.navigate(['login']);
+    this.router.navigate(['/login']);
   }
 }
