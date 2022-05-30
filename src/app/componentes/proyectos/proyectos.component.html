@@ -41,9 +41,9 @@
       </h3>
     </div>
     <div>
-      <p>
+      <strong>
         {{proyecto.subtitulo}}
-      </p>
+      </strong>
     </div>
     <div *ngIf="mostrar, else detalle">
       <div class="container-fluid">
@@ -73,21 +73,21 @@
     </div>
 
     <ng-template #detalle>
-      <div>
+      <div class="margenes">
         <img src="https://www.argentina.gob.ar/sites/default/files/min_ciencia_tecnologia_innovacion.png"
-        class="logoMin img-fluid" alt="" srcset="">
-    </div>
-      <p>
+          class="logoMin img-fluid" alt="" srcset="">
+      </div>
+      <div class="margenes">
         {{proyecto.descripcion}}
-      </p>
-      <strong>Stack</strong>
-          <ul *ngFor="let item of proyecto.stack" >
-            <li class="item-stack">{{item}}</li>
-          </ul>
+      </div>
+      <strong>Stack utilizado:</strong>
+      <div *ngFor="let item of proyecto.stack">
+        <li class="item-stack">{{item}}</li>
+      </div>
       <div class="cont">
         <button class="btn btn-outline-primary botonMas" (click)="mostrarDetalle()">Mostrar
           menos...</button>
       </div>
     </ng-template>
   </article>
-</section> 
+</section>

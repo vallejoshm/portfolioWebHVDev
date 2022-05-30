@@ -5,8 +5,8 @@
     <form (ngSubmit)="crearNuevaEdu()" novalidate #f="ngForm">
         <div class="form-group mb-3">
             <label for="nombreCarrera">Nombre de la carrera</label>
-            <input type="text" class="form-control" autocomplete={{nombreCarrera}} id="nombreCarrera" name="nombreCarrera" [(ngModel)]="nombreCarrera"
-                required>
+            <input type="text" class="form-control" autocomplete={{nombreCarrera}} id="nombreCarrera"
+                name="nombreCarrera" [(ngModel)]="nombreCarrera" required>
         </div>
         <div class="form-group mb-3">
             <label for="descripcion">Descripción</label>
@@ -28,11 +28,11 @@
                 <input type="date" class="form-control" id="start" name="trip-start" [(ngModel)]="fechaInicio">
             </div>
             <div class="mb-3" *ngIf="avanceSi else noAvance">
-                <label for="end" class="me-3">fecha de finalización:  </label>
+                <label for="end" class="me-3">fecha de finalización: </label>
                 <input type="date" class="form-control" id="end" name="trip-end" [(ngModel)]="fechaFin" disabled>
             </div>
             <ng-template #noAvance class="mb-3">
-                <label for="end" class="me-3">fecha de finalización:  </label>
+                <label for="end" class="me-3">fecha de finalización: </label>
                 <input type="date" class="form-control" id="end" name="trip-end" [(ngModel)]="fechaFin">
             </ng-template>
         </div>
@@ -43,7 +43,7 @@
             </div>
             <ng-template #avanceNo class="form-group">
                 <label for="avance">Porcentaje de avance de la carrera</label>
-                <input class="form-control" type="number"  placeholder="100" aria-label="Disabled input example"
+                <input class="form-control" type="number" placeholder="100" aria-label="Disabled input example"
                     disabled>
             </ng-template>
         </div>
@@ -64,8 +64,10 @@
             <label for="paginaWeb">Web site</label>
             <input type="text" class="form-control" id="paginaWeb" name="paginaWeb" [(ngModel)]="paginaWeb" required>
         </div>
-        <button type="submit" class="btn btn-info btn-block"  (click)="onClickSi()"
-        mat-button [mat-dialog-close]="true" [disabled]="!f.valid">{{nombreBoton}}</button>
-        <button class="btn btn-info btn-block" mat-button (click)="onClickNo()">CANCELAR</button>
+        <div class="botones">
+            <button type="submit" class="btn  btn-info btn-block" (click)="onClickSi()" mat-button
+                [mat-dialog-close]="true" [disabled]="!f.valid">{{nombreBoton}}</button>
+            <button class="btn btn-info btn-block" mat-button (click)="onClickNo()">Cancelar</button>
+        </div>
     </form>
 </div>

@@ -1,10 +1,12 @@
 import { EducacionService } from 'src/app/servicios/educacion/educacion.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { ModalNuevaEduComponent } from '../modal-nueva-edu/modal-nueva-edu.component';
 import { Educacion } from 'src/app/modelos/educacion';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { ModalNuevaEduComponent } from '../modal-nueva-edu/modal-nueva-edu.component';
+import { TokenService } from 'src/app/servicios/autenticacion/token.service';
+import { ErrorServiceService } from 'src/app/servicios/autenticacion/error-service';
 
 @Component({
   selector: 'app-educacion',
@@ -20,18 +22,24 @@ export class EducacionComponent implements OnInit {
   unaEdu: any;
 
   constructor(public dialog: MatDialog, private _servicioEduc: EducacionService,
-    private toastr: ToastrService, private router: Router) { }
+    private toastr: ToastrService, private router: Router, private tokenService: TokenService,
+    private errorService: ErrorServiceService) { }
 
   eliminarEdu(edu: Educacion) {
-    this._servicioEduc.eliminarEducacion(edu).subscribe(
-      data => {
-        this.eliminado(), (err: { error: { Mensaje: string | undefined; }; }) => {
-          this.toastr.error(err.error.Mensaje, 'No Se ha Eliminado el elemento', {
-            timeOut: 2000
-          })
+    if (this.tokenService.isAdmin()) {
+      this._servicioEduc.eliminarEducacion(edu).subscribe(
+        data => {
+          this.eliminado(), (err: { error: { Mensaje: string | undefined; }; }) => {
+            this.toastr.error(err.error.Mensaje, 'No Se ha Eliminado el elemento', {
+              timeOut: 2000
+            })
+          }
         }
-      }
-    )
+      )
+    } else {
+      this.errorService.show(403);
+    }
+
   }
 
   eliminado() {
@@ -47,7 +55,7 @@ export class EducacionComponent implements OnInit {
         this.unaEdu = element;
     });
     this.mostrar = !this.mostrar;
-    
+
     this.obtenerLista();
   }
   obtenerLista() {
@@ -60,16 +68,20 @@ export class EducacionComponent implements OnInit {
   }
 
   openDialog(ide: number): void {
-    const accion = String(ide);
-    const dialogRef = this.dialog.open(ModalNuevaEduComponent,
-      {
-        data:accion
-      });
-    dialogRef.afterClosed().subscribe(
-      data => {
-        this.obtenerLista();
-      }
-    );
+    if (this.tokenService.isAdmin()) {
+      const accion = String(ide);
+      const dialogRef = this.dialog.open(ModalNuevaEduComponent,
+        {
+          data: accion
+        });
+      dialogRef.afterClosed().subscribe(
+        data => {
+          this.obtenerLista();
+        }
+      );
+    } else {
+      this.errorService.show(403);
+    }
   }
 
 }

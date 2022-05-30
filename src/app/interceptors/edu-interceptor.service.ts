@@ -33,7 +33,7 @@ export class EduInterceptorService implements HttpInterceptor {
         }
         
         // aquí podrías agregar código que muestre el error en alguna parte fija de la pantalla.
-        this.errorService.show(errorMessage, errorStatus);
+        this.errorService.show(errorStatus);
         return throwError(errorMessage);
       })
     );

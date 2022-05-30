@@ -5,8 +5,10 @@ import { ToastrService } from 'ngx-toastr';
 import { Habilidad } from 'src/app/modelos/habilidad';
 import { HabilidadesService } from 'src/app/servicios/habilidades/habilidades.service';
 import { ModalNuevaSkillComponent } from '../modal-nueva-skill/modal-nueva-skill.component';
-import {ProgressSpinnerMode} from '@angular/material/progress-spinner';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { ThemePalette } from '@angular/material/core';
+import { ErrorServiceService } from 'src/app/servicios/autenticacion/error-service';
+import { TokenService } from 'src/app/servicios/autenticacion/token.service';
 
 
 @Component({
@@ -29,57 +31,50 @@ export class HabilidadesComponent implements OnInit {
   descripNombre!: string;
 
   constructor(private _servicioHabil: HabilidadesService, public dialog: MatDialog,
-    private toastr: ToastrService, private router: Router) {}
+    private toastr: ToastrService, private router: Router, private tokenService: TokenService,
+    private errorService: ErrorServiceService) { }
 
-  colorGet(tipo: string){
-    if(tipo == 'Hard'){
+  colorGet(tipo: string) {
+    if (tipo == 'Hard') {
       this.color = 'warn';
-    }else{
+    } else {
       this.color = 'primary';
     }
     return this.color;
   }
-  valueGet(progreso: number){
-      this.value = progreso;
-      if (progreso==25) this.progresoString = 'Principiante';
-      else if (progreso==50) this.progresoString = 'Intermedio';
-      else if (progreso==75) this.progresoString = 'Avanzado';
-      else if (progreso==100) this.progresoString = 'Experto';
-      return this.value;
+  valueGet(progreso: number) {
+    this.value = progreso;
+    if (progreso == 25) this.progresoString = 'Principiante';
+    else if (progreso == 50) this.progresoString = 'Intermedio';
+    else if (progreso == 75) this.progresoString = 'Avanzado';
+    else if (progreso == 100) this.progresoString = 'Experto';
+    return this.value;
   }
-
-  // mostrarDescripcion(i: number, tipoHabil: string, event: Event) {
-  //   this.id = i;
-  //   this.mostrar = true;
-  //   if (tipoHabil == "soft") {
-  //     (<SVGSVGElement>event.target).style.color = "rgb(53,53,175)";
-  //   } else {
-  //     (<SVGSVGElement>event.target).style.color = "rgb(238,53,53)";
-  //   }
-
-
-  // }
 
   ngOnInit(): void {
     this.obtenerListaHab();
   }
 
-  obtenerListaHab(){
+  obtenerListaHab() {
     this._servicioHabil.obtenerTodos().subscribe(
       data => this.listaHabilidades = data
     )
   }
 
-  eliminarHab(hab: Habilidad){
-    this._servicioHabil.eliminarHabilidad(hab).subscribe(
-      data => {
-        this.eliminado(), (err: { error: { Mensaje: string | undefined; }; }) => {
-          this.toastr.error(err.error.Mensaje, 'No Se ha Eliminado el elemento', {
-            timeOut: 2000
-          })
+  eliminarHab(hab: Habilidad) {
+    if (this.tokenService.isAdmin()) {
+      this._servicioHabil.eliminarHabilidad(hab).subscribe(
+        data => {
+          this.eliminado(), (err: { error: { Mensaje: string | undefined; }; }) => {
+            this.toastr.error(err.error.Mensaje, 'No Se ha Eliminado el elemento', {
+              timeOut: 2000
+            })
+          }
         }
-      }
-    )
+      )
+    } else {
+      this.errorService.show(403);
+    }
   }
 
   eliminado() {
@@ -91,8 +86,8 @@ export class HabilidadesComponent implements OnInit {
 
   verDescrip(habil: Habilidad) {
     this.verDescripcion = !this.verDescripcion;
-    this.listaHabilidades.forEach(hab =>{
-      if(hab.id == habil.id){
+    this.listaHabilidades.forEach(hab => {
+      if (hab.id == habil.id) {
         this.descrip = hab.descripcion;
         this.descripNombre = hab.nombre;
       }
@@ -104,17 +99,20 @@ export class HabilidadesComponent implements OnInit {
   }
 
   openDialog(id: number) {
-    const accion = String(id);
-    const dialogRef = this.dialog.open(ModalNuevaSkillComponent,
-      {
-        data:accion
-      })
-    dialogRef.afterClosed().subscribe(
-      data => {
-        this.ngOnInit();
-      }
-    );
-
+    if (this.tokenService.isAdmin()) {
+      const accion = String(id);
+      const dialogRef = this.dialog.open(ModalNuevaSkillComponent,
+        {
+          data: accion
+        })
+      dialogRef.afterClosed().subscribe(
+        data => {
+          this.ngOnInit();
+        }
+      );
+    } else {
+      this.errorService.show(403);
+    }
   }
 
 }

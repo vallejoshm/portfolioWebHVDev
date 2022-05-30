@@ -80,6 +80,7 @@
     }
     .item-stack{
         list-style: none;
+        margin: 2%;
     }
     .logoMin{
         order: 0;
@@ -87,5 +88,8 @@
         align-self: auto;
         height: 50%;
         width: 50%;
+    }
+    .margenes{
+        margin: 5%;
     }
     

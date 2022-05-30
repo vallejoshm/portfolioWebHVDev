@@ -1,11 +1,4 @@
-/* .card{
-    margin-left: auto;
-    margin-top: auto;
-}
 
-.linkYP{
-    text-decoration: none;
-} */
 .acercaDe{
     display: flex;
   }
@@ -13,16 +6,17 @@
         display: flex;
         flex-direction: column;
         align-items: flex;
+        min-width: 100px;
         margin-left: 100px;
         margin-right: 100px;
         margin-top:-55px;
     }
         .fotoPerfil{
-            height:280px;
-            width:180px;
+            height:350px;
+            width:250px;
         }
         .figura figcaption{
-            height: 100%;
+            height: 100%;;
         }
         .acercaDe-articulo-fotoPerfil{
             display: flex;

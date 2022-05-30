@@ -5,8 +5,7 @@
     <form (ngSubmit)="crearNuevaExp()" novalidate #f="ngForm">
         <div class="form-group mb-3">
             <label for="nombre">Nombre de Habilidad</label>
-            <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="nombre"
-                required>
+            <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="nombre" required>
         </div>
         <div class="form-group mb-3">
             <label for="descripcion">Descripción</label>
@@ -33,8 +32,10 @@
                 </mat-select>
             </mat-form-field>
         </div>
-        <button type="submit" class="btn btn-info btn-block" (click)="onClickSi()"
-        mat-button [mat-dialog-close]="true" [disabled]="!f.valid">{{nombreBoton}}</button>
-        <button class="btn btn-info btn-block" mat-button (click)="onClickNo()">CANCELAR</button>
+        <div class="botones">
+            <button type="submit" class="btn  btn-info btn-block" (click)="onClickSi()" mat-button
+                [mat-dialog-close]="true" [disabled]="!f.valid">{{nombreBoton}}</button>
+            <button class="btn ml-1 btn-info btn-block" mat-button (click)="onClickNo()">Cancelar</button>
+        </div>
     </form>
 </div>
