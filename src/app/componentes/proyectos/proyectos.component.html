@@ -56,10 +56,14 @@
           <br />
         </div>
         <div>
-          <strong>Stack</strong>
-          <ul *ngFor="let item of proyecto.stack">
-            <li class="item-stack">{{item}}</li>
-          </ul>
+          <p>
+            <strong>Fecha de inicio: </strong>
+            {{proyecto.creacion}}
+          </p>
+          <p>
+            <strong>Fecha de finalización: </strong>
+            {{proyecto.creacionFin}}
+          </p>
         </div>
       </div>
       <div class="cont">
@@ -69,20 +73,17 @@
     </div>
 
     <ng-template #detalle>
-      <div class="cont">
-        <img src="../../../assets/logo_small.png" class="d-block w-100 imagen img-fluid" alt="img-port-cod">
-      </div>
+      <div>
+        <img src="https://www.argentina.gob.ar/sites/default/files/min_ciencia_tecnologia_innovacion.png"
+        class="logoMin img-fluid" alt="" srcset="">
+    </div>
       <p>
         {{proyecto.descripcion}}
       </p>
-      <p>
-        <strong>Fecha de inicio: </strong>
-        {{proyecto.creacion}}
-      </p>
-      <p>
-        <strong>Fecha de finalización: </strong>
-        {{proyecto.creacionFin}}
-      </p>
+      <strong>Stack</strong>
+          <ul *ngFor="let item of proyecto.stack" >
+            <li class="item-stack">{{item}}</li>
+          </ul>
       <div class="cont">
         <button class="btn btn-outline-primary botonMas" (click)="mostrarDetalle()">Mostrar
           menos...</button>

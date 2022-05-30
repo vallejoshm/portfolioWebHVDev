@@ -81,3 +81,11 @@
     .item-stack{
         list-style: none;
     }
+    .logoMin{
+        order: 0;
+        flex: 1 1 auto;
+        align-self: auto;
+        height: 50%;
+        width: 50%;
+    }
+    

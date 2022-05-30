@@ -11,10 +11,10 @@
             </svg>
         </button>
     </h2>
-    <div class="skills-descripcion-item">
+    <div class="skills-descripcion-item" *ngIf="verDescripcion else noVer">
         <div *ngFor="let habilidad of listaHabilidades, index as i" >
             <div class="skills-bloque">
-                <mat-card class="container">
+                <mat-card class="container" >
                     <div class="botonesElementos">
                         <h2 class="example-h2">{{habilidad.nombre}}</h2>
                         <a (click)="openDialog(habilidad.id)">
@@ -43,10 +43,24 @@
                         <h4>{{progresoString}}</h4>
                     </mat-card-content>
                     <mat-card-footer class="container">
-                        <button class="btn btn-outline-primary">Descripción</button>
+                        <button class="btn btn-outline-primary" (click)="verDescrip(habilidad)">Descripción</button>
                     </mat-card-footer>
                 </mat-card>
+                
             </div>           
         </div>
     </div>
+    <ng-template #noVer>
+        <mat-card class="container">
+            <div class="botonesElementos">
+                <h2 class="example-h2">{{descripNombre}}</h2>
+            </div>
+            <mat-card-content>
+                <h4>{{descrip}}</h4>
+            </mat-card-content>
+            <mat-card-footer class="container">
+                <button class="btn btn-outline-primary" (click)="noDescrip()">Atras</button>
+            </mat-card-footer>
+        </mat-card>
+    </ng-template>
 </section>

@@ -24,6 +24,9 @@ export class HabilidadesComponent implements OnInit {
   color: ThemePalette = 'primary';
   mode: ProgressSpinnerMode = 'determinate';
   value = 0;
+  verDescripcion: boolean = true;
+  descrip!: string;
+  descripNombre!: string;
 
   constructor(private _servicioHabil: HabilidadesService, public dialog: MatDialog,
     private toastr: ToastrService, private router: Router) {}
@@ -84,6 +87,20 @@ export class HabilidadesComponent implements OnInit {
       timeOut: 2000
     }), this.ngOnInit();
 
+  }
+
+  verDescrip(habil: Habilidad) {
+    this.verDescripcion = !this.verDescripcion;
+    this.listaHabilidades.forEach(hab =>{
+      if(hab.id == habil.id){
+        this.descrip = hab.descripcion;
+        this.descripNombre = hab.nombre;
+      }
+    })
+  }
+
+  noDescrip() {
+    this.verDescripcion = !this.verDescripcion;
   }
 
   openDialog(id: number) {

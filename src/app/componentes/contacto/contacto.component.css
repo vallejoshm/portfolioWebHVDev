@@ -5,5 +5,5 @@
 }
 .titulo{
     display: flex;
-    align-items: start;
+    justify-content: flex-start;
 }
