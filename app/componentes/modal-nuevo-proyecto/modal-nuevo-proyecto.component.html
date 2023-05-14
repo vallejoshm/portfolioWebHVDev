@@ -1,0 +1,116 @@
+<div mat-dialog-title>
+    {{titulo}}
+</div>
+<div mat-dialog-content>
+    <form (ngSubmit)="crearNuevoProy()" novalidate #f="ngForm">
+        <div class="form-group mb-3">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="nombre" required>
+        </div>
+        <div class="form-group mb-3">
+            <label for="subtitulo">Resumen del proyecto</label>
+            <input type="text" class="form-control" id="subtitulo" name="subtitulo" [(ngModel)]="subtitulo" required>
+        </div>
+        <div class="form-group mb-3">
+            <label for="descripcion">Descripción</label>
+            <input type="text" class="form-control" id="descripcion" name="descripcion" [(ngModel)]="descripcion"
+                required>
+        </div>
+        <div class="input-dinamico">
+            <label for="imagen">Link de Imagen</label>
+            <input #linkImagen placeholder="Agregue imágenes de muestra">
+            <button type="button" (click)="agregar(linkImagen.value,'img')">Add</button>
+            <ul>
+                <li *ngFor="let imagen of imagenes">{{imagen}}</li>
+            </ul>
+        </div>
+        <div class="input-dinamico">
+            <label for="stack">Tecnología</label>
+            <input #itemStack placeholder="Agregue tecnoligías a su Stack">
+
+            <button type="button" (click)="agregar(itemStack.value,'stk')">Add</button>
+
+            <ul>
+                <li *ngFor="let item of stack">{{item}}</li>
+            </ul>
+        </div>
+        <!-- <div class="form-group mb-3">
+            <label for="imagen1">Link de Imagen</label>
+            <input type="text" class="form-control" id="imagen1" name="imagen1" required>
+        </div>
+        <div class="form-group mb-3" *ngIf="inputImg2">
+            <label for="imagen2">Link de Imagen</label>
+            <input type="text" class="form-control" id="imagen2" name="imagen2" placeholder="Opcional">
+        </div>
+        <div class="form-group mb-3" *ngIf="inputImg3">
+            <label for="imagen3">Link de Imagen</label>
+            <input type="text" class="form-control" id="imagen3" name="imagen3" placeholder="Opcional">
+        </div>
+        <div class="form-group mb-3" *ngIf="inputImg4">
+            <label for="imagen3">Link de Imagen</label>
+            <input type="text" class="form-control" id="imagen3" name="imagen3"
+                placeholder="No se pueden cargar más imágenes" disabled>
+        </div>
+        <div class="form-group mb-3">
+            <label for="stack1">Tecnología</label>
+            <input type="text" class="form-control" id="stack1" name="stack1">
+        </div>
+        <div class="form-group mb-3" *ngIf="inputStk2">
+            <label for="stack2">Tecnología</label>
+            <input type="text" class="form-control" id="stack2" name="stack2" placeholder="Opcional">
+        </div>
+        <div class="form-group mb-3" *ngIf="inputStk3">
+            <label for="stack3">Tecnología</label>
+            <input type="text" class="form-control" id="stack3" name="stack3" placeholder="Opcional">
+        </div>
+        <div class="form-group mb-3" *ngIf="inputStk4">
+            <label for="stack4">Link de Imagen</label>
+            <input type="text" class="form-control" id="stack4" name="stack4" placeholder="Opcional">
+        </div>
+        <div class="form-group mb-3" *ngIf="inputStk5">
+            <label for="stack5">Link de Imagen</label>
+            <input type="text" class="form-control" id="stack5" name="stack5" placeholder="Opcional">
+        </div>
+        <div class="form-group mb-3" *ngIf="inputStk6">
+            <label for="stack6">Link de Imagen</label>
+            <input type="text" class="form-control" id="stack6" name="stack6" placeholder="Opcional">
+        </div>
+        <div class="form-group mb-3" *ngIf="inputStk7">
+            <label for="stack7">Link de Imagen</label>
+            <input type="text" class="form-control" id="stack7" name="stack7"
+                placeholder="No se pueden cargar más tecnologías" disabled>
+        </div> -->
+        <div class="form-group mb-3">
+            <mat-form-field appearance="fill">
+                <mat-label for="status" class="form-label etiqStatus">¿Está finalizado?</mat-label>
+                <mat-select (selectionChange)="opcionElegida($event)">
+                    <mat-option [value]="finalizado">Si</mat-option>
+                    <mat-option [value]="noFinalizado">No</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="form-group mb-3">
+            <div class="mb-3">
+                <label for="start" class="me-1">Fecha de incio:</label>
+                <input type="date" class="form-control" id="start" name="trip-start" [(ngModel)]="creacion">
+            </div>
+            <div class="mb-3" *ngIf="fin else noFin">
+                <label for="end" class="me-3">fecha de finalización: </label>
+                <input type="date" class="form-control" id="end" name="trip-end" [(ngModel)]="creacionFin">
+            </div>
+            <ng-template #noFin class="mb-3">
+                <label for="end" class="me-3">fecha de finalización: </label>
+                <input type="date" class="form-control" id="end" name="trip-end" [(ngModel)]="creacionFin" disabled>
+            </ng-template>
+        </div>
+        <div class="form-group mb-3">
+            <label for="paginaWeb">Web site</label>
+            <input type="text" class="form-control" id="paginaWeb" name="paginaWeb" [(ngModel)]="link">
+        </div>
+        <div class="botones">
+            <button type="submit" class="btn  btn-info btn-block" (click)="onClickSi()" mat-button
+                [mat-dialog-close]="true" [disabled]="!f.valid">{{nombreBoton}}</button>
+            <button class="btn ml-1 btn-info btn-block" mat-button (click)="onClickNo()">Cancelar</button>
+        </div>
+    </form>
+</div>

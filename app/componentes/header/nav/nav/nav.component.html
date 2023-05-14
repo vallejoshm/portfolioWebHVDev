@@ -1,0 +1,95 @@
+
+<div class="padre container">
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" style="cursor: pointer;" (click)="toIndex()">
+                <img class="img-logo img-fluid" src="../../../assets/logo_small.png" alt="" srcset="">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+                aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                
+                <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+                    <li class="nav-item social">
+                        <a class="nav-link active " aria-current="page"
+                            href="https://www.argentina.gob.ar/produccion/argentina-programa/segunda-etapa" target="_blank">
+                            #YOPROGRAMO
+                        </a>
+                    </li>
+
+                </ul>
+                <form class="d-flex" *ngIf="isLogged else notLogged" >
+                    <div class="social">
+                        <div>
+                            <a style="cursor: pointer;" [routerLink]="['/contacto']">
+                                <i class="fas fa-mail-bulk"></i>
+                            </a>
+                        </div>
+                        <div>
+                            <a style="cursor: pointer;" href="https://www.facebook.com/hernan.vallejos.712/" target="_blank">
+                                <i class="fab fa-facebook-square"></i>
+                            </a>
+                        </div>
+                        <div>
+                            <a style="cursor: pointer;" href="https://www.instagram.com/hernanmatiasvallejos/?hl=es-la" target="_blank">
+                                <i class="fab fa-instagram-square"></i>
+                            </a>
+                        </div>
+                        <div>
+                            <a style="cursor: pointer;" href="https://www.linkedin.com/in/hernan-vallejos-756707180/" target="_blank">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
+                        <div>
+                            <a style="cursor: pointer;" href="https://github.com/vallejoshm" target="_blank">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                        <div>
+                            <a style="cursor: pointer;" (click)="onLogOut()">
+                                <i class="fas fa-sign-out-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </form>
+                <ng-template class="d-flex" #notLogged>
+                    <div class="social">
+                        <div>
+                            <a style="cursor: pointer;">
+                                <i class="fas fa-mail-bulk"></i>
+                            </a>
+                        </div>
+                        <div>
+                            <a style="cursor: pointer;">
+                                <i class="fab fa-facebook-square"></i>
+                            </a>
+                        </div>
+                        <div>
+                            <a style="cursor: pointer;">
+                                <i class="fab fa-instagram-square"></i>
+                            </a>
+                        </div>
+                        <div>
+                            <a style="cursor: pointer;">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
+                        <div>
+                            <a style="cursor: pointer;">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                        <div>
+                            <a style="cursor: pointer;" [routerLink]="['/login']">
+                                <i class="fas fa-sign-in-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </nav>
+</div>
+

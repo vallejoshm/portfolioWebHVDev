@@ -1,0 +1,9 @@
+{
+    "/api": {
+      "target": "https://fast-brook-89046.herokuapp.com",
+      "secure": false,
+      "pathRewrite": {
+        "^/api": ""
+    }
+    }
+  }

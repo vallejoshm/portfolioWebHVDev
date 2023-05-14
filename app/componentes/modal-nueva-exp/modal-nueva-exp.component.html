@@ -1,0 +1,62 @@
+<div mat-dialog-title>
+    {{titulo}}
+</div>
+<div mat-dialog-content>
+    <form (ngSubmit)="crearNuevaExp()" novalidate #f="ngForm">
+        <div class="form-group mb-3">
+            <label for="cargo">Puesto laboral</label>
+            <input type="text" class="form-control" id="cargo" name="cargo" [(ngModel)]="cargo"
+                required>
+        </div>
+        <div class="form-group mb-3">
+            <label for="descripTareas">Descripción de tareas</label>
+            <input type="text" class="form-control" id="descripTareas" name="descripTareas" [(ngModel)]="descripTareas"
+                required>
+        </div>
+        <div class="form-group mb-3">
+            <mat-form-field appearance="fill">
+                <mat-label for="status" class="form-label etiqStatus">¿Es su trabajo actual?</mat-label>
+                <mat-select (selectionChange)="opcionElegida($event)">
+                    <mat-option [value]="actual">Si</mat-option>
+                    <mat-option [value]="noActual">No</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="form-group mb-3">
+            <div class="mb-3">
+                <label for="start" class="me-1">Fecha de incio:</label>
+                <input type="date" class="form-control" id="start" name="trip-start" [(ngModel)]="fechaInicio">
+            </div>
+            <div class="mb-3" *ngIf="trabajoActual else noActual">
+                <label for="end" class="me-3">fecha de finalización:  </label>
+                <input type="date" class="form-control" id="end" name="trip-end" [(ngModel)]="fechaFin" disabled>
+            </div>
+            <ng-template #noActual class="mb-3">
+                <label for="end" class="me-3">fecha de finalización:  </label>
+                <input type="date" class="form-control" id="end" name="trip-end" [(ngModel)]="fechaFin">
+            </ng-template>
+        </div>
+        <div class="form-group mb-3">
+            <label for="nombreEmpresa">Nombre de la empresa</label>
+            <input type="text" class="form-control" id="nombreEmpresa" name="nombreEmpresa"
+                [(ngModel)]="nombreEmpresa" required>
+        </div>
+        <div class="form-group mb-3">
+            <label for="direccion">Dirección</label>
+            <input type="text" class="form-control" id="direccion" name="direccion" [(ngModel)]="direccion" required>
+        </div>
+        <div class="form-group mb-3">
+            <label for="telefono">Telefono</label>
+            <input type="text" class="form-control" id="telefono" name="telefono" [(ngModel)]="telefono" required>
+        </div>
+        <div class="form-group mb-3">
+            <label for="paginaWeb">Web site</label>
+            <input type="text" class="form-control" id="paginaWeb" name="paginaWeb" [(ngModel)]="paginaWeb">
+        </div>
+        <div class="botones">
+            <button type="submit" class="btn  btn-info btn-block" (click)="onClickSi()" mat-button
+                [mat-dialog-close]="true" [disabled]="!f.valid">{{nombreBoton}}</button>
+            <button class="btn btn-info btn-block" mat-button (click)="onClickNo()">Cancelar</button>
+        </div>
+        </form>
+</div>

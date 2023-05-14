@@ -1,0 +1,133 @@
+.acercaDe {
+    display: flex;
+}
+
+.figura {
+    display: flex;
+    flex-direction: column;
+    align-items: flex;
+    min-width: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: -55px;
+}
+
+.fotoPerfil {
+    height: 350px;
+    width: 250px;
+}
+
+.figura figcaption {
+    height: 100%;
+    ;
+}
+
+.acercaDe-articulo-fotoPerfil {
+    display: flex;
+}
+
+.acercaDe-articulo-iconos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    margin-bottom: 5%;
+
+}
+
+.bloque-iconos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-content: space-between;
+    align-items: center;
+}
+
+.logoMin {
+    order: 0;
+    flex: 1 1 auto;
+    align-self: auto;
+    height: 50%;
+    width: 50%;
+}
+
+.logoCessi {
+    order: 0;
+    flex: 1 1 auto;
+    align-self: auto;
+    height: 50%;
+    width: 50%;
+}
+
+.logoInti {
+    order: 0;
+    flex: 1 1 auto;
+    align-self: auto;
+    height: 50%;
+    width: 50%;
+}
+
+.botonesElementos a {
+    display: contents;
+    color: rgb(0, 0, 0);
+}
+
+.editar {
+    color: rgb(247, 181, 48);
+}
+
+
+.div-imagen{
+    display: inline-block;
+    position: relative;
+}
+
+.btn-img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 0;
+    padding: 0;
+    margin: 0;
+    opacity: 0.07;
+}
+
+.btn-img:hover {
+    opacity: 1;
+    -webkit-transition: opacity 500ms;
+    -moz-transition: opacity 500ms;
+    -o-transition: opacity 500ms;
+    -ms-transition: opacity 500ms;
+    transition: opacity 500ms;
+}
+
+@media only screen and (max-width: 600px) {
+    .acercaDe {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .acercaDe-articulo-fotoPerfil {
+        display: flex;
+        align-items: center;
+    }
+
+    .figura {
+        margin-top: 10px;
+        display: flex;
+        max-width: 30%;
+        flex-direction: row;
+
+    }
+
+    .figura figcaption {
+        display: flex;
+        height: 50%;
+        flex-direction: column;
+    }
+
+    .fotoPerfil {
+        max-width: 30%;
+    }
+}

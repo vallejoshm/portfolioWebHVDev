@@ -1,0 +1,190 @@
+.skills {
+    margin: 5%;
+}
+
+.titulo-hab {
+    margin-bottom: 4%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titulo {
+    font-size: 24px;
+}
+
+.botonModal{
+    background: transparent;
+    border: none;
+}
+.agregarHab{
+    color: rgb(0, 0, 0);
+    margin-right: 5%;
+    width: 30px;
+    height : 30px;
+}
+    .agregarHab:hover{
+        color : rgb(61, 193, 246);
+    }
+
+    .skills-bloque{
+        margin: 3%;
+        display: flex;
+    }
+
+    .skills-descripcion-item {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        padding: 15px;
+        margin: 20px;
+    }
+
+    .spinner{
+        border: radius 6px;
+        background-color: rgb(251, 249, 249);
+    }
+/* .etiqStatus{
+    margin-right: 10px;
+} */
+
+/* .section-experiencia {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.article-experiencia {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+.article-experiencia-item {
+    display: inline;
+    margin-left: 0%;
+    margin-bottom: 5%;
+} */
+
+.botonMas {
+    width: 350px;
+}
+
+.botonesElementos {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.botonesElementos a {
+    display: contents;
+    color: rgb(0, 0, 0);
+
+
+}
+
+.trash {
+    color: rgb(0, 0, 0);
+}
+
+.trash:hover {
+    color: rgb(251, 68, 68);
+}
+
+.editar {
+    color: rgb(0, 0, 0);
+}
+
+.editar:hover {
+    color: rgb(247, 181, 48);
+}
+
+.botonesElementos svg {
+    margin: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+    .botonMas {
+        width: 250px;
+    }
+}
+
+
+/* .skills {
+    display: flex;
+    flex-direction: column;
+    margin: 5%;
+}
+.botonModal{
+    background: transparent;
+    border: none;
+}
+.titulo-hab {
+    margin-bottom: 4%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.skills-descripcion {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.skills-descripcion-item {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.parrafo-skills-descripcion {
+    font-size: 30px;
+}
+
+.bloques {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.bloque {
+    display: flex;
+    justify-content: center;
+}
+
+.botonBloque {
+    background: transparent;
+    border: none;
+}
+
+.bi {
+    width: 70px;
+    height: 70px;
+}
+
+.bqsoft:hover {
+    color: rgb(53, 53, 175);
+}
+
+.bqhard:hover {
+    color: rgb(238, 53, 53);
+}
+
+.hard {
+    color: rgb(238, 53, 53);
+}
+
+.soft {
+    color: rgb(53, 53, 175);
+}
+
+@media only screen and (max-width: 600px) {
+    .bi {
+        width: auto;
+        height: auto;
+    }
+} */

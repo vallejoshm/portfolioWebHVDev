@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+.header {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.contenedor {
+    display: flex;
+    justify-content: center;
+}
+
+.botonesElementos a {
+    display: contents;
+    color: rgb(0, 0, 0);
+}
+
+.editar {
+    color: rgb(247, 181, 48);
+}
+
+
+.div-imagen {
+    display: inline-block;
+    position: relative;
+}
+
+.btn-img {
+    position: absolute;
+    top: 75%;
+    left: 90%;
+    z-index: 0;
+    padding: 0;
+    margin: 0;
+    opacity: 0.07;
+}
+
+.btn-img:hover {
+    opacity: 1;
+    -webkit-transition: opacity 500ms;
+    -moz-transition: opacity 500ms;
+    -o-transition: opacity 500ms;
+    -ms-transition: opacity 500ms;
+    transition: opacity 500ms;
+}
